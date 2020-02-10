@@ -18,16 +18,31 @@ class MoveCard extends Component {
     return (list.length > 0) ? list.join(', ') : '';
   }
 
+  getSpringCount(red, yellow) {
+    let springCost = [];
+    for (let i = 0; i < red; i++) {
+      springCost.push(<div className='red springs'> </div>)
+    }
+    for (let j = 0; j < yellow; j++) {
+      springCost.push(<div className='yellow springs'> </div>)
+    }
+    return (
+      <div className='spring-box'>
+        {springCost}
+      </div>
+    )
+  }
+
   render() {
     return (
         <div className='card' ref={this.props.move.id} key={this.props.move.id}>
-            {/* Name */}
-            <div style={{fontWeight:'bold'}}>{this.props.move.name}</div>
+            <div className='move-name'>{this.props.move.name}</div>
+            
+            {this.getSpringCount(this.props.move.red_springs, this.props.move.yellow_springs)}
+
+            <div className='megaformer-image'> </div>
 
             <div>Block: {this.props.move.block}</div>
-
-            <div>Yellow Springs: {this.props.move.yellow_springs}</div>
-            <div>Red Springs: {this.props.move.red_springs}</div>
 
             <div>{this.props.move.black_cables ? 'Black Cables' : '' }</div>
             <div>{this.props.move.red_cables ? 'Red Cables' : '' }</div>
@@ -45,7 +60,8 @@ class MoveCard extends Component {
             <div>{this.props.move.level}</div>
 
             <div className='line-break'>Action: {this.listItems(this.props.move.action)}</div>
-            <div className='line-break'>Related Moves: {this.listItems(this.props.move.related)}</div>
+            {/*<div className='line-break'>Related Moves: {this.listItems(move.related)}</div>*/}
+          
           </div>
     )
   }
@@ -53,7 +69,7 @@ class MoveCard extends Component {
 
 class App extends Component {
   stackEl = React.createRef();
-
+  counter = 1;
   constructor(props, context) {
     super(props, context);
     // Update the state with jsonData
@@ -61,16 +77,10 @@ class App extends Component {
       moveData,
       stack: null
     };
-    this.listItems = this.listItems.bind(this);
-  }
-
-  // Refactor later into something more interesting
-  listItems(list) {
-    return (list.length > 0) ? list.join(', ') : '';
   }
 
   // Card throw method
-  throwCard() {
+  throwCard(dir) {
     // ReactSwing Card Directions
     console.log('ReactSwing.DIRECTION', ReactSwing.DIRECTION);
     console.log('this.state.stack', this.state.stack);
@@ -78,7 +88,9 @@ class App extends Component {
     console.log('this.stackEl', this.stackEl);
 
     // ReactSwing Component Childrens
-    const targetEl = this.stackEl.current.childElements[1];
+
+    const targetEl = this.stackEl.current.childElements[this.stackEl.current.childElements.length - this.counter];
+    this.counter++;
     console.log('targetEl', targetEl);
 
     if (targetEl && targetEl.current) {
@@ -88,7 +100,7 @@ class App extends Component {
       console.log('card', card);
 
       // throwOut method call
-      card.throwOut(100, 200, ReactSwing.DIRECTION.RIGHT);
+      card.throwOut(100, 100, dir);
     }
   }
 
@@ -97,9 +109,6 @@ class App extends Component {
       <div className="App">
         <div>
           <div id="viewport">
-            {this.state.moveData.moves.map(move => (
-            <MoveCard move={move} /> ))}
-
             <ReactSwing
               className="stack"
               tagName="div"
@@ -107,56 +116,20 @@ class App extends Component {
               ref={this.stackEl}
               throwout={e => console.log('throwout', e)}
             >
-                {this.state.moveData.moves.map(move => (
-                  /* Move Card */
-                  <div className='card' ref={move.id} key={move.id}>
-
-                    <div style={{fontWeight:'bold'}}>{move.name}</div>
-
-                    <div>Block: {move.block}</div>
-
-                    <div>Yellow Springs: {move.yellow_springs}</div>
-                    <div>Red Springs: {move.red_springs}</div>
-
-                    <div>{move.black_cables ? 'Black Cables' : '' }</div>
-                    <div>{move.red_cables ? 'Red Cables' : '' }</div>
-
-                    <div className='line-break'>Location: {this.listItems(move.location)}</div>
-
-                    <div>Direction Facing: {move.direction}</div>
-
-                    <div>Duration: {move.duration}:00</div>
-
-                    <div className='line-break'>Primary Muscles: {this.listItems(move.primary_muscles)}</div>
-
-                    <div className='line-break'>Secondary Muscles: {this.listItems(move.secondary_muscles)}</div>
-
-                    <div>{move.level}</div>
-
-                    <div className='line-break'>Action: {this.listItems(move.action)}</div>
-                    <div className='line-break'>Related Moves: {this.listItems(move.related)}</div>
-                  </div>
-                ))}
-              {/*
-                  children elements is will be Card
-              
-              <div className="card clubs" ref="card1" throwout={e => console.log('card throwout', e)}>
-                ♣
-              </div>
-              <div className="card diamonds" ref="card2">
-                ♦
-              </div>
-              <div className="card hearts" ref="card3">
-                ♥
-              </div>
-              <div className="card spades" ref="card4">
-                ♠
-              </div>*/}
+              {this.state.moveData.moves.map(move => (
+                /* Move Card */
+                <div>
+                  <MoveCard move={move} />
+                </div>
+              ))}
             </ReactSwing>
           </div>
           <div className="control">
-            <button type="button" onClick={this.throwCard.bind(this)}>
-              throw Card
+            <button type="button" onClick={this.throwCard.bind(this, ReactSwing.DIRECTION.LEFT)}>
+              no
+            </button>
+            <button type="button" onClick={this.throwCard.bind(this, ReactSwing.DIRECTION.RIGHT)}>
+              yes
             </button>
           </div>
         </div>
