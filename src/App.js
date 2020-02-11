@@ -35,31 +35,32 @@ class MoveCard extends Component {
 
   render() {
     return (
-        <div className='card' ref={this.props.move.id} key={this.props.move.id}>
+        <div ref={this.props.move.id} key={this.props.move.id}>
             <div className='move-name'>{this.props.move.name}</div>
             
             {this.getSpringCount(this.props.move.red_springs, this.props.move.yellow_springs)}
 
             <div className='megaformer-image'> </div>
 
-            <div>Block: {this.props.move.block}</div>
+            <div className='move-block'>{this.props.move.block} - {this.props.move.level}</div>
+            <div className='move-action'>Action: {this.listItems(this.props.move.action)}</div>
 
+            {/*
             <div>{this.props.move.black_cables ? 'Black Cables' : '' }</div>
             <div>{this.props.move.red_cables ? 'Red Cables' : '' }</div>
 
             <div className='line-break'>Location: {this.listItems(this.props.move.location)}</div>
 
             <div>Direction Facing: {this.props.move.direction}</div>
-
+            
             <div>Duration: {this.props.move.duration}:00</div>
 
             <div className='line-break'>Primary Muscles: {this.listItems(this.props.move.primary_muscles)}</div>
 
             <div className='line-break'>Secondary Muscles: {this.listItems(this.props.move.secondary_muscles)}</div>
 
-            <div>{this.props.move.level}</div>
-
-            <div className='line-break'>Action: {this.listItems(this.props.move.action)}</div>
+            */}
+            
             {/*<div className='line-break'>Related Moves: {this.listItems(move.related)}</div>*/}
           
           </div>
@@ -100,7 +101,7 @@ class App extends Component {
       console.log('card', card);
 
       // throwOut method call
-      card.throwOut(100, 100, dir);
+      card.throwOut(50, 50, dir);
     }
   }
 
@@ -118,7 +119,7 @@ class App extends Component {
             >
               {this.state.moveData.moves.map(move => (
                 /* Move Card */
-                <div>
+                <div className='card'>
                   <MoveCard move={move} />
                 </div>
               ))}
