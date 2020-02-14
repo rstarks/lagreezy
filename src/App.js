@@ -3,7 +3,7 @@ import ReactSwing from 'react-swing';
 import './App.css';
 import moveData from "./data/moves.json";
 
-/* TODO: Fix this shit */
+/* MoveCard component generation code */
 class MoveCard extends Component {
   constructor(props) {
     super(props);
@@ -45,7 +45,7 @@ class MoveCard extends Component {
             <div className='move-block'>{this.props.move.block} - {this.props.move.level}</div>
             <div className='move-action'>Action: {this.listItems(this.props.move.action)}</div>
 
-            {/*
+            {/* Used for extra info not yet surfaced on the cards
             <div>{this.props.move.black_cables ? 'Black Cables' : '' }</div>
             <div>{this.props.move.red_cables ? 'Red Cables' : '' }</div>
 
@@ -118,7 +118,7 @@ class App extends Component {
               throwout={e => console.log('throwout', e)}
             >
               {this.state.moveData.moves.map(move => (
-                /* Move Card */
+                /* Move Card, the wrapper div is used for stack drop area */
                 <div className='card'>
                   <MoveCard move={move} />
                 </div>
