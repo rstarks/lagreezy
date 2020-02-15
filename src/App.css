@@ -45,8 +45,8 @@ input {
 
 
 #viewport {
-    width: 480px; 
-    height: 640px; 
+    width: 260px; 
+    height: 340px; 
     background: rgb(62, 71, 199); 
     border: 10px solid rgb(82, 118, 237); 
     margin: 100px auto 0; 
@@ -58,7 +58,7 @@ input {
     height: 320px; 
     background: #ED5D52; 
     position: absolute; 
-    top: 160px; 
+    top: 10px; 
     left: 50%;
     margin-left: -120px; 
     border-radius: 10px;
