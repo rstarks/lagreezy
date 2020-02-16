@@ -2,6 +2,16 @@ import React, { Component } from 'react';
 import ReactSwing from 'react-swing';
 import './App.css';
 import moveData from "./data/moves.json";
+import megaformerVector from './img/megaformer-isometric.svg';
+import megaformerCarriage from './img/megaformer-carriage.svg';
+
+const images = [{
+  name: 'megaformer',
+  background: require('./img/megaformer-isometric.svg')
+},{
+  name: 'megaformer-white',
+  background: require('./img/megaformer-isometric-white.svg')
+}]
 
 /* MoveCard component generation code */
 class MoveCard extends Component {
@@ -40,7 +50,11 @@ class MoveCard extends Component {
             
             {this.getSpringCount(this.props.move.red_springs, this.props.move.yellow_springs)}
 
-            <div className='megaformer-image'> </div>
+            <div className='megaformer-image'>
+            <img src={megaformerCarriage} alt="Megaformer Carriage" />
+              <img src={megaformerVector} alt="Megaformer Vector" />
+              
+            </div>
 
             <div className='move-block'>{this.props.move.block} - {this.props.move.level}</div>
             <div className='move-action'>Action: {this.listItems(this.props.move.action)}</div>
@@ -108,7 +122,6 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <div>
           <div id="viewport">
             <ReactSwing
               className="stack"
@@ -133,7 +146,6 @@ class App extends Component {
               yes
             </button>
           </div>
-        </div>
       </div>
     );
   }
