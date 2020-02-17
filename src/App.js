@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import ReactSwing from 'react-swing';
 import './App.css';
+import FontAwesome from 'react-fontawesome';
+
 import moveData from "./data/moves.json";
 import megaformerVector from './img/megaformer-isometric.svg';
 import megaformerCarriage from './img/megaformer-carriage.svg';
@@ -122,6 +124,9 @@ class App extends Component {
   render() {
     return (
       <div className="App">
+          <div id="header">
+            <div>Lagreezy </div>
+          </div>
           <div id="viewport">
             <ReactSwing
               className="stack"
@@ -138,13 +143,28 @@ class App extends Component {
               ))}
             </ReactSwing>
           </div>
-          <div className="control">
-            <button type="button" onClick={this.throwCard.bind(this, ReactSwing.DIRECTION.LEFT)}>
-              no
-            </button>
-            <button type="button" onClick={this.throwCard.bind(this, ReactSwing.DIRECTION.RIGHT)}>
-              yes
-            </button>
+          <div id="footer"> 
+            <div className="control">
+              <button type="button" onClick={this.throwCard.bind(this, ReactSwing.DIRECTION.LEFT)}>
+              <FontAwesome
+                name='user'
+              />
+              </button>
+            </div>
+            <div className="control">
+              <button type="button" onClick={this.throwCard.bind(this, ReactSwing.DIRECTION.RIGHT)}>
+                <FontAwesome
+                  name='layer-group'
+                />
+              </button>
+            </div>
+            <div className="control">
+              <button type="button" onClick={this.throwCard.bind(this, ReactSwing.DIRECTION.RIGHT)}>
+                <FontAwesome
+                  name='fa-step-forward'
+                />
+              </button>
+            </div>
           </div>
       </div>
     );
