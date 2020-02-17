@@ -161,7 +161,7 @@ class App extends Component {
             <div className="control">
               <button type="button" onClick={this.throwCard.bind(this, ReactSwing.DIRECTION.RIGHT)}>
                 <FontAwesome
-                  name='fa-step-forward'
+                  name='bar-chart'
                 />
               </button>
             </div>

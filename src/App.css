@@ -7,9 +7,12 @@ li {
 }
 
 html,
-body {
-    background: #222; 
+body,
+#root {
+    background: #000; 
     font: normal 16px/24px 'Open Sans', sans-serif;
+    width: 100%;
+    height: 100%;
 }
 
 input,
@@ -45,11 +48,11 @@ input {
 
 
 .App {
-    height: 100vw; 
-    width: 56.25; /* 1182/1806 * 90 = 58.90 */
-    max-width: 56.25vh; /* 1806/1182 * 90 */
+    height: 100vh; 
+    width: 56.25vh; /* 1242/2208 * 100 = 56.25 */
+    max-width: 56.25vh; /* 2208/1242 * 100 =  */
     max-height: 100vh;
-
+    background: #fff;
     margin: auto;
     position: relative;
     top:0;bottom:0; /* vertical center */
@@ -63,7 +66,7 @@ input {
     position: relative;
     width: 101%;
     height: 9%;
-    background: #eee;
+    background: #fff;
     font-family: 'Pacifico', cursive;
     text-align: center;
     color: #5276ED;
@@ -79,7 +82,7 @@ input {
     height: 7%;
     width: 101%;
     display: table;
-    background: #eee;
+    background: #fff;
     text-align: center;
 }
 #footer .control {
@@ -94,15 +97,21 @@ input {
     padding: 0;
     width: 100%;
     height: 100%;
-    font-size: 2em;
+    font-size: 1.4em;
+    border: none;
+    background: #fff;
+}
+#footer .control button:hover {
+    color: #5276ED;
 }
 
 /* Main card frame */
 #viewport {
     position: relative;
     height: 80%;
-    background: #eee;
-    border: 10px solid #eee;
+    background: #fff;
+    /*border: 0px solid #fff;*/
+    margin: 10px 12px;
     /*background: rgb(62, 71, 199); 
     border: 10px solid rgb(82, 118, 237); */
 }
@@ -116,6 +125,8 @@ input {
     left: 0px;
     margin-left: 0px; 
     border-radius: 10px;
+    box-shadow: 0 0 32px rgba(0,0,0,.2), 4px 4px 4px rgba(0,0,0,.01);
+    z-index: 1;
 }
 
 #viewport .card {
