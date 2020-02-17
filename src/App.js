@@ -59,7 +59,7 @@ class MoveCard extends Component {
             <div className='move-block'>{this.props.move.block} - {this.props.move.level}</div>
             <div className='move-action'>Action: {this.listItems(this.props.move.action)}</div>
 
-            {/* Used for extra info not yet surfaced on the cards
+            {/* Used for extra info not yet surfaced on the cards 0.654485
             <div>{this.props.move.black_cables ? 'Black Cables' : '' }</div>
             <div>{this.props.move.red_cables ? 'Red Cables' : '' }</div>
 

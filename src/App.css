@@ -10,13 +10,6 @@ html,
 body {
     background: #222; 
     font: normal 16px/24px 'Open Sans', sans-serif;
-    height: 100%;
-    width: 100%;
-}
-#root,
-.App {
-    height: 100%;
-    width: 100%;
 }
 
 button,
@@ -53,12 +46,18 @@ input {
 
 
 #viewport {
-    width: 25%; 
-    height: 70%; 
+    height: 90vw; 
+    width: 58.90vw; /* 1182/1806 * 90 = 58.90 */
+    max-width: 58.90vh; /* 1806/1182 * 90 */
+    max-height: 90vh;
+
+    margin: auto;
+    position: relative;
+    top:0;bottom:0; /* vertical center */
+    left:0;right:0; /* horizontal center */
+
     background: rgb(62, 71, 199); 
     border: 10px solid rgb(82, 118, 237); 
-    margin: 100px auto 0; 
-    position: relative;
 }
 
 #viewport .stack {
@@ -105,7 +104,7 @@ input {
     display: inline-block;
     font-weight: bold;
     font-family: 'Fira Sans Condensed', sans-serif;
-    font-size: 12px;
+    font-size: 2em;
     vertical-align: top;
 }
 
@@ -116,10 +115,10 @@ input {
 }
 
 #viewport .springs {
-    width: 10px;
-    height: 10px;
+    width: 14px;
+    height: 14px;
     margin: 1px;
-    border-radius: 5px;
+    border-radius: 7px;
     background: yellow;
     display: inline-block;
     text-align: center;
@@ -134,7 +133,7 @@ input {
 
 #viewport .megaformer-image {
     height: 50%;
-    width: 94%;
+    width: 95%;
     background-color: #ddd;
     border-radius: 4px;
     margin-top: 4px;
@@ -155,7 +154,8 @@ input {
     width: 50%;
     display: inline-block;
     font-weight: bold;
-    margin-top: 4px;
+    margin-top: 84%;
+    font-size: 1.4em;
 }
 
 #viewport .move-action {
@@ -163,6 +163,7 @@ input {
     display: inline-block;
     text-align: right;
     margin-top: 4px;
+    font-size: 1.4em;
 }
 
 #viewport .line-break {
