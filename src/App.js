@@ -6,14 +6,8 @@ import FontAwesome from 'react-fontawesome';
 import moveData from "./data/moves.json";
 import megaformerVector from './img/megaformer-isometric.svg';
 import megaformerCarriage from './img/megaformer-carriage.svg';
-
-const images = [{
-  name: 'megaformer',
-  background: require('./img/megaformer-isometric.svg')
-},{
-  name: 'megaformer-white',
-  background: require('./img/megaformer-isometric-white.svg')
-}]
+import megaformerFront from './img/megaformer-front.svg';
+import megaformerBack from './img/megaformer-back.svg';
 
 /* MoveCard component generation code */
 class MoveCard extends Component {
@@ -23,6 +17,7 @@ class MoveCard extends Component {
       move: this.props.move
     }
     this.listItems = this.listItems.bind(this);
+    this.getLocation = this.getLocation.bind(this);
   }
 
   // Refactor later into something more interesting
@@ -45,6 +40,23 @@ class MoveCard extends Component {
     )
   }
 
+  getLocation(location) {
+    let locationImage;
+    if (location == "carriage") {
+      locationImage = megaformerCarriage;
+    } else if (location == "front") {
+      locationImage = megaformerFront;
+    } else if (location == 'back') {
+      locationImage = megaformerBack;
+    } else if (location == 'floor') {
+      /*fix this later */
+      locationImage = megaformerBack;
+    }
+    return(
+      <img src={locationImage} alt="Megaformer" />
+    )
+  }
+
   render() {
     return (
         <div ref={this.props.move.id} key={this.props.move.id}>
@@ -52,30 +64,33 @@ class MoveCard extends Component {
             
             {this.getSpringCount(this.props.move.red_springs, this.props.move.yellow_springs)}
 
-            <div className='megaformer-image'>
-            <img src={megaformerCarriage} alt="Megaformer Carriage" />
+            <div className='image-wrapper'>
+              <div className='megaformer-image'>
+              {/* locations: front, back, carriage, floor */}
+              
+              {this.props.move.location.map(location =>
+                this.getLocation(location)
+              )}
               <img src={megaformerVector} alt="Megaformer Vector" />
               
+              
+              </div>
             </div>
 
-            <div className='move-block'>{this.props.move.block} - {this.props.move.level}</div>
-            <div className='move-action'>Action: {this.listItems(this.props.move.action)}</div>
+            <div className='move-block'><b>Block: </b>{this.props.move.block} - {this.props.move.level}</div>
+            <div className='move-action'><b>Action: </b> {this.listItems(this.props.move.action)}</div>
 
-            {/* Used for extra info not yet surfaced on the cards 0.654485
-            <div>{this.props.move.black_cables ? 'Black Cables' : '' }</div>
-            <div>{this.props.move.red_cables ? 'Red Cables' : '' }</div>
+            {/* Used for extra info not yet surfaced on the cards 0.654485 */}
+            <div className='line-break'>{this.props.move.black_cables ? 'Black Cables' : '' }</div>
+            <div className='line-break'>{this.props.move.red_cables ? 'Red Cables' : '' }</div>
 
-            <div className='line-break'>Location: {this.listItems(this.props.move.location)}</div>
-
-            <div>Direction Facing: {this.props.move.direction}</div>
+            <div className='line-break'>Direction Facing: {this.props.move.direction}</div>
             
-            <div>Duration: {this.props.move.duration}:00</div>
+            <div className='line-break'>Duration: {this.props.move.duration}:00</div>
 
             <div className='line-break'>Primary Muscles: {this.listItems(this.props.move.primary_muscles)}</div>
 
             <div className='line-break'>Secondary Muscles: {this.listItems(this.props.move.secondary_muscles)}</div>
-
-            */}
             
             {/*<div className='line-break'>Related Moves: {this.listItems(move.related)}</div>*/}
           
@@ -89,11 +104,15 @@ class App extends Component {
   counter = 1;
   constructor(props, context) {
     super(props, context);
+
     // Update the state with jsonData
     this.state = {
       moveData,
       stack: null
     };
+    this.shuffle = this.shuffle.bind(this);
+    this.shuffle(this.state.moveData.moves);
+
   }
 
   // Card throw method
@@ -121,6 +140,19 @@ class App extends Component {
     }
   }
 
+  shuffle(arr) {
+    var i,
+        j,
+        temp;
+    for (i = arr.length - 1; i > 0; i--) {
+        j = Math.floor(Math.random() * (i + 1));
+        temp = arr[i];
+        arr[i] = arr[j];
+        arr[j] = temp;
+    }
+    return arr;    
+  };
+
   render() {
     return (
       <div className="App">
@@ -131,35 +163,45 @@ class App extends Component {
             <ReactSwing
               className="stack"
               tagName="div"
-              setStack={stack => this.setState({ stack })}
+              setStack={stack => this.setState({ 
+                stack
+              })}
               ref={this.stackEl}
               throwout={e => console.log('throwout', e)}
             >
               {this.state.moveData.moves.map(move => (
                 /* Move Card, the wrapper div is used for stack drop area */
-                <div className='card'>
-                  <MoveCard move={move} />
+                <div 
+                  className='card'
+                >
+                    <MoveCard move={move} />
                 </div>
               ))}
             </ReactSwing>
           </div>
           <div id="footer"> 
+            
+            {/* Profile panel button onClick={this.throwCard.bind(this, ReactSwing.DIRECTION.LEFT)} */}
             <div className="control">
-              <button type="button" onClick={this.throwCard.bind(this, ReactSwing.DIRECTION.LEFT)}>
+              <button type="button">
               <FontAwesome
                 name='user'
               />
               </button>
             </div>
+            
+            {/* Card panel button, default  onClick={this.throwCard.bind(this, ReactSwing.DIRECTION.RIGHT)} */}
             <div className="control">
-              <button type="button" onClick={this.throwCard.bind(this, ReactSwing.DIRECTION.RIGHT)}>
+              <button type="button">
                 <FontAwesome
                   name='layer-group'
                 />
               </button>
             </div>
+
+            {/* Graph panel button onClick={this.throwCard.bind(this, ReactSwing.DIRECTION.RIGHT)} */}
             <div className="control">
-              <button type="button" onClick={this.throwCard.bind(this, ReactSwing.DIRECTION.RIGHT)}>
+              <button type="button" >
                 <FontAwesome
                   name='bar-chart'
                 />
