@@ -177,8 +177,13 @@ class App extends Component {
               throwout={e => console.log('throwout', e)} 
               config={{
                 allowedDirections:[ReactSwing.DIRECTION.LEFT, ReactSwing.DIRECTION.RIGHT],
-                throwOutDistance: () => Math.max(window.innerWidth, window.innerHeight),
-                throwOutConfidence: () => 1
+                throwOutDistance: () => Math.max(window.innerWidth/4, window.innerHeight),
+                throwOutConfidence: (xOffset, yOffset, element) => {
+                  const xConfidence = Math.min(Math.abs(xOffset) / element.offsetWidth, 1);
+                  const yConfidence = Math.min(Math.abs(yOffset) / element.offsetHeight, 1);
+              
+                  return Math.max(xConfidence, yConfidence);
+                }
               }}
               
             >
