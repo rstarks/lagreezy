@@ -42,13 +42,13 @@ class MoveCard extends Component {
 
   getLocation(location) {
     let locationImage;
-    if (location == "carriage") {
+    if (location === "carriage") {
       locationImage = megaformerCarriage;
-    } else if (location == "front") {
+    } else if (location === "front") {
       locationImage = megaformerFront;
-    } else if (location == 'back') {
+    } else if (location === 'back') {
       locationImage = megaformerBack;
-    } else if (location == 'floor') {
+    } else if (location === 'floor') {
       /*fix this later */
       locationImage = megaformerBack;
     }
@@ -104,7 +104,14 @@ class App extends Component {
   counter = 1;
   constructor(props, context) {
     super(props, context);
-
+    this.config = {
+      throwOutDistance: () => Math.max(window.innerWidth, window.innerHeight),
+      throwOutConfidence: () => 1,
+      allowedDirections: [
+        ReactSwing.DIRECTION.LEFT,
+        ReactSwing.DIRECTION.RIGHT,
+      ]
+    };
     // Update the state with jsonData
     this.state = {
       moveData,
@@ -167,7 +174,13 @@ class App extends Component {
                 stack
               })}
               ref={this.stackEl}
-              throwout={e => console.log('throwout', e)}
+              throwout={e => console.log('throwout', e)} 
+              config={{
+                allowedDirections:[ReactSwing.DIRECTION.LEFT, ReactSwing.DIRECTION.RIGHT],
+                throwOutDistance: () => Math.max(window.innerWidth, window.innerHeight),
+                throwOutConfidence: () => 1
+              }}
+              
             >
               {this.state.moveData.moves.map(move => (
                 /* Move Card, the wrapper div is used for stack drop area */
