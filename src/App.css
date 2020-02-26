@@ -67,10 +67,18 @@ input {
     width: 101%;
     height: 9%;
     background: #fff;
+    font-size: 1.8em;
+}
+#header button {
+    font-family: inherit;
+    color: inherit;
+    border: 0px solid white;
+    font-size: inherit;
+}
+.logo {
     font-family: 'Pacifico', cursive;
     text-align: center;
     color: #5276ED;
-    font-size: 1.8em;
 }
 #header div {
     display: table-cell;
@@ -256,4 +264,50 @@ input {
 
 .source a {
     color: #C7433E;
+}
+
+.modal {
+    height: 96vh;
+    width: 53vh;
+    max-width:53vh;
+    max-height: 96vh;
+
+    opacity: 1;
+    background: white;
+    box-shadow: 0px 0px 0px 256px rgba(0,0,0,0.5),
+                4px 4px 4px rgba(0,0,0,0.1);
+    border-radius: 10px;
+    
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    
+    z-index: 5;
+    text-align: center;
+}
+
+.modal .logo {
+    font-size: 3em;
+    margin: 1em;
+}
+.modal .content {
+    height: 54vh;
+    background: #eee;
+    border-radius: 8px;
+    margin: 12px;
+    padding: 16px;
+    overflow-y: auto;
+}
+.modal button {
+    cursor: pointer;
+    width: 40vh;
+    color: white;
+    background: #5276ED;
+    border: 0px solid white;
+    font-size: 1em;
+    padding: 16px;
+    margin: 12px;
+    border-radius: 16px;
+    font-weight: bold;
 }

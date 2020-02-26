@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from "prop-types";
 import ReactSwing from 'react-swing';
 import './App.css';
 import FontAwesome from 'react-fontawesome';
@@ -8,6 +9,28 @@ import megaformerVector from './img/megaformer-isometric.svg';
 import megaformerCarriage from './img/megaformer-carriage.svg';
 import megaformerFront from './img/megaformer-front.svg';
 import megaformerBack from './img/megaformer-back.svg';
+
+/* Modal component */
+class Modal extends Component {
+  render() {
+    if(!this.props.show) {
+      return null;
+    }
+    return (
+      <div className='modal'>
+        <div className='logo'>Lagreezy</div>
+        <div className='content'>{this.props.children}</div>
+        <div >
+          <button onClick={this.props.onClose}>Get Started</button>
+        </div>
+      </div>
+    );
+  }
+}
+Modal.propTypes = {
+  onClose: PropTypes.func.isRequired,
+  show: PropTypes.bool.isRequired
+}
 
 /* MoveCard component generation code */
 class MoveCard extends Component {
@@ -114,6 +137,7 @@ class App extends Component {
     };
     // Update the state with jsonData
     this.state = {
+      show: true,
       moveData,
       stack: null
     };
@@ -160,11 +184,17 @@ class App extends Component {
     return arr;    
   };
 
+  showModal = () => {
+    this.setState(prev=>({
+      show: !prev.show
+    }));
+  };
+
   render() {
     return (
       <div className="App">
-          <div id="header">
-            <div>Lagreezy </div>
+          <div className='logo' id="header">
+            <button onClick={e => { this.showModal(); }}>Lagreezy</button>
           </div>
           <div id="viewport">
             <ReactSwing
@@ -226,6 +256,10 @@ class App extends Component {
               </button>
             </div>
           </div>
+          <Modal onClose={this.showModal} show={this.state.show}>
+            Welcome to Lagreezy! <br /><br />
+            <div style={{textAlign:'left'}}>This is a prototype of an app designed for Lagree trainers and enthusiasts. Currently you can flip through cards with each of the moves featured on the official website. More features and moves will be added soon!</div>
+          </Modal>
       </div>
     );
   }
