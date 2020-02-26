@@ -257,8 +257,11 @@ class App extends Component {
             </div>
           </div>
           <Modal onClose={this.showModal} show={this.state.show}>
-            Welcome to Lagreezy! <br /><br />
-            <div style={{textAlign:'left'}}>This is a prototype of an app designed for Lagree trainers and enthusiasts. Currently you can flip through cards with each of the moves featured on the official website. More features and moves will be added soon!</div>
+            Welcome to Lagreezy! <br />
+            <div style={{textAlign:'left'}}>
+              <p>This is a prototype of an app designed for Lagree trainers and enthusiasts.</p>
+              <p>Currently you can swipe <i>(left or right)</i> through cards with each of the moves featured on the official website. More features and moves will be added soon!</p>
+            </div>
           </Modal>
       </div>
     );
