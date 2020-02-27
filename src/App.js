@@ -13,11 +13,9 @@ import megaformerBack from './img/megaformer-back.svg';
 /* Modal component */
 class Modal extends Component {
   render() {
-    if(!this.props.show) {
-      return null;
-    }
+    
     return (
-      <div className='modal'>
+      <div className={this.props.show ? 'modal' : 'modal off'}>
         <div className='logo'>Lagreezy</div>
         <div className='content'>{this.props.children}</div>
         <div >
@@ -83,11 +81,26 @@ class MoveCard extends Component {
   render() {
     return (
         <div ref={this.props.move.id} key={this.props.move.id}>
+
+            
+            
             <div className='move-name'>{this.props.move.name}</div>
             
             {this.getSpringCount(this.props.move.red_springs, this.props.move.yellow_springs)}
 
             <div className='image-wrapper'>
+              
+              <div className="swingLabel swingLabelRight">
+                <FontAwesome
+                  name='check-circle'
+                />
+              </div>
+              <div className="swingLabel swingLabelLeft">
+                <FontAwesome
+                  name='times-circle'
+                />
+              </div>
+              
               <div className='megaformer-image'>
               {/* locations: front, back, carriage, floor */}
               
@@ -164,13 +177,14 @@ class App extends Component {
       // stack.getCard
       const card = this.state.stack.getCard(targetEl.current);
 
-      console.log('card', card);
+      console.log('manual card thrown = ', card);
 
       // throwOut method call
       card.throwOut(50, 50, dir);
     }
   }
 
+  // Shuffles the array of cards/moves
   shuffle(arr) {
     var i,
         j,
@@ -190,6 +204,11 @@ class App extends Component {
     }));
   };
 
+  getDirEffect(dir) {
+    console.log('direction', dir);
+    return 1;
+  }
+
   render() {
     return (
       <div className="App">
@@ -204,11 +223,21 @@ class App extends Component {
                 stack
               })}
               ref={this.stackEl}
-              throwout={e => console.log('throwout', e)} 
+              /*throwout={e => console.log('throwout', e.target.id)}*/
+              throwin={e => e.target.querySelectorAll('.swingLabel').forEach((elem) => { elem.style.opacity = 0 })}
               config={{
                 allowedDirections:[ReactSwing.DIRECTION.LEFT, ReactSwing.DIRECTION.RIGHT],
                 throwOutDistance: () => Math.max(window.innerWidth/4, window.innerHeight),
                 throwOutConfidence: (xOffset, yOffset, element) => {
+                  // Yes/No label appearance code
+                  let direction = (parseInt(xOffset) / parseInt(element.offsetWidth)) * 1.7;
+                  if (direction > 0) {
+                    element.querySelector('.swingLabelRight').style.opacity = direction;
+                  } else if (direction < -0) {
+                    element.querySelector('.swingLabelLeft').style.opacity=-direction;
+                  }
+
+                  // Decide if throw was successful
                   const xConfidence = Math.min(Math.abs(xOffset) / element.offsetWidth, 1);
                   const yConfidence = Math.min(Math.abs(yOffset) / element.offsetHeight, 1);
               
@@ -220,6 +249,8 @@ class App extends Component {
               {this.state.moveData.moves.map(move => (
                 /* Move Card, the wrapper div is used for stack drop area */
                 <div 
+                  key={move.id}
+                  id={move.id}
                   className='card'
                 >
                     <MoveCard move={move} />
@@ -261,6 +292,7 @@ class App extends Component {
             <div style={{textAlign:'left'}}>
               <p>This is a prototype of an app designed for Lagree trainers and enthusiasts.</p>
               <p>Currently you can swipe <i>(left or right)</i> through cards with each of the moves featured on the official website. More features and moves will be added soon!</p>
+              <p><b>Today's Updates:</b> Added yes/no selection effect by swiping right and left.</p>
             </div>
           </Modal>
       </div>
