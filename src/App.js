@@ -219,18 +219,27 @@ class App extends Component {
               })}
               ref={this.stackEl}
               /*throwout={e => console.log('throwout', e.target.id)}*/
-              dragend={e => e.target.querySelectorAll('.swingLabel').forEach((elem) => { elem.style.opacity = 0 })}
+              dragend={e => e.target.querySelectorAll('.swingLabel').forEach((elem) => { 
+                elem.style.opacity = 0;
+                elem.style.visibility = 'hidden';
+              })}
               config={{
                 allowedDirections:[ReactSwing.DIRECTION.LEFT, ReactSwing.DIRECTION.RIGHT],
                 throwOutDistance: () => Math.max(window.innerWidth/4, window.innerHeight),
                 throwOutConfidence: (xOffset, yOffset, element) => {
                   // Yes/No label appearance code
-                  /*let direction = (parseInt(xOffset) / parseInt(element.offsetWidth)) * 1.7;
+                  let direction = (parseInt(xOffset) / parseInt(element.offsetWidth)) * 1.7;
                   if (direction > 0) {
-                    element.querySelector('.swingLabelRight').style.opacity = direction;
+                    // Visibility
+                    element.querySelector('.swingLabelRight').style.visibility = 'visible';
+                    // Opacity
+                    element.querySelector('.swingLabelRight').style.opacity = Math.min(direction.toFixed(1), 1);
                   } else if (direction < -0) {
-                    element.querySelector('.swingLabelLeft').style.opacity = -direction;
-                  }*/
+                    // Visibility
+                    element.querySelector('.swingLabelLeft').style.visibility = 'visible';
+                    // Opacity
+                    element.querySelector('.swingLabelLeft').style.opacity = Math.min(-direction.toFixed(1), 1);
+                  }
 
                   // Decide if throw was successful
                   const xConfidence = Math.min(Math.abs(xOffset) / element.offsetWidth, 1);

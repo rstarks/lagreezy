@@ -339,6 +339,7 @@ input {
     z-index: 5;
     text-align: center;
     line-height: 40vh;
+    visibility: hidden;
 }
 
 .swingLabelRight {
@@ -347,8 +348,4 @@ input {
 
 .swingLabelLeft {
     color: red;
-}
-
-.swingLabelOff {
-    display: hidden;
 }
