@@ -61,7 +61,7 @@ input {
 
     overflow: hidden;
 }
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 500px) {
     .App {
         height: 90vh;
         max-width: 90vh;
