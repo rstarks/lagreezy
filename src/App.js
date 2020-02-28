@@ -230,12 +230,12 @@ class App extends Component {
                 throwOutDistance: () => Math.max(window.innerWidth/4, window.innerHeight),
                 throwOutConfidence: (xOffset, yOffset, element) => {
                   // Yes/No label appearance code
-                  /*let direction = (parseInt(xOffset) / parseInt(element.offsetWidth)) * 1.7;
+                  let direction = (parseInt(xOffset) / parseInt(element.offsetWidth)) * 1.7;
                   if (direction > 0) {
                     element.querySelector('.swingLabelRight').style.opacity = direction;
                   } else if (direction < -0) {
                     element.querySelector('.swingLabelLeft').style.opacity = -direction;
-                  }*/
+                  }
 
                   // Decide if throw was successful
                   const xConfidence = Math.min(Math.abs(xOffset) / element.offsetWidth, 1);
