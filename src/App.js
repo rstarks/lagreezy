@@ -232,9 +232,9 @@ class App extends Component {
                   // Yes/No label appearance code
                   let direction = (parseInt(xOffset) / parseInt(element.offsetWidth)) * 1.7;
                   if (direction > 0) {
-                    element.querySelector('.swingLabelRight').style.opacity = direction;
+                    element.querySelector('.swingLabelRight').style.opacity = Math.round(direction);
                   } else if (direction < -0) {
-                    element.querySelector('.swingLabelLeft').style.opacity=-direction;
+                    element.querySelector('.swingLabelLeft').style.opacity = Math.round(-direction);
                   }
 
                   // Decide if throw was successful
