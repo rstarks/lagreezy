@@ -157,13 +157,15 @@ input {
     background: #fff;
     top: 0; 
     left: 0; 
-    /*box-shadow: 0 0 2px rgba(0,0,0,.2), 1px 1px 1px rgba(0,0,0,.2); */
     text-align: left; 
     font-size: 0.6em;
-    line-height: 12px;
+    line-height: 1.8em;
     box-sizing: border-box; 
     cursor: default;
-    padding: 16px;
+    padding: 1.6em;
+}
+.drag {
+    box-shadow: 0 0 12px rgba(0,0,0,0.1);
 }
 
 .advanced {

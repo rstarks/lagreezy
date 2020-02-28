@@ -219,9 +219,12 @@ class App extends Component {
               })}
               ref={this.stackEl}
               /*throwout={e => console.log('throwout', e.target.id)}*/
+              throwin={e => e.target.classList.remove('drag') }
+              dragstart={e => e.target.classList.add('drag') }
               dragend={e => e.target.querySelectorAll('.swingLabel').forEach((elem) => { 
                 elem.style.opacity = 0;
                 elem.style.visibility = 'hidden';
+                elem.classList.remove('drag');
               })}
               config={{
                 allowedDirections:[ReactSwing.DIRECTION.LEFT, ReactSwing.DIRECTION.RIGHT],
@@ -233,12 +236,12 @@ class App extends Component {
                     // Visibility
                     element.querySelector('.swingLabelRight').style.visibility = 'visible';
                     // Opacity
-                    element.querySelector('.swingLabelRight').style.opacity = Math.min(direction.toFixed(1), 1);
+                    element.querySelector('.swingLabelRight').style.opacity = Math.min(direction.toFixed(2), 1);
                   } else if (direction < -0) {
                     // Visibility
                     element.querySelector('.swingLabelLeft').style.visibility = 'visible';
                     // Opacity
-                    element.querySelector('.swingLabelLeft').style.opacity = Math.min(-direction.toFixed(1), 1);
+                    element.querySelector('.swingLabelLeft').style.opacity = Math.min(-direction.toFixed(2), 1);
                   }
 
                   // Decide if throw was successful
