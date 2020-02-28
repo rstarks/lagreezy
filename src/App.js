@@ -13,7 +13,9 @@ import megaformerBack from './img/megaformer-back.svg';
 /* Modal component */
 class Modal extends Component {
   render() {
-    
+    if (!this.props.show) {
+      return null;
+    }
     return (
       <div className={this.props.show ? 'modal' : 'modal off'}>
         <div className='logo'>Lagreezy</div>
