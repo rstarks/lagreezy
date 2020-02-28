@@ -84,15 +84,13 @@ class MoveCard extends Component {
     return (
         <div ref={this.props.move.id} key={this.props.move.id}>
 
-            
-            
             <div className='move-name'>{this.props.move.name}</div>
             
             {this.getSpringCount(this.props.move.red_springs, this.props.move.yellow_springs)}
 
             <div className='image-wrapper'>
               
-              <div className="swingLabel swingLabelRight">
+              {/*<div className="swingLabel swingLabelRight">
                 <FontAwesome
                   name='check-circle'
                 />
@@ -101,7 +99,7 @@ class MoveCard extends Component {
                 <FontAwesome
                   name='times-circle'
                 />
-              </div>
+              </div>*/}
               
               <div className='megaformer-image'>
               {/* locations: front, back, carriage, floor */}
@@ -206,11 +204,6 @@ class App extends Component {
     }));
   };
 
-  getDirEffect(dir) {
-    console.log('direction', dir);
-    return 1;
-  }
-
   render() {
     return (
       <div className="App">
@@ -232,12 +225,12 @@ class App extends Component {
                 throwOutDistance: () => Math.max(window.innerWidth/4, window.innerHeight),
                 throwOutConfidence: (xOffset, yOffset, element) => {
                   // Yes/No label appearance code
-                  let direction = (parseInt(xOffset) / parseInt(element.offsetWidth)) * 1.7;
+                  /*let direction = (parseInt(xOffset) / parseInt(element.offsetWidth)) * 1.7;
                   if (direction > 0) {
                     element.querySelector('.swingLabelRight').style.opacity = direction;
                   } else if (direction < -0) {
                     element.querySelector('.swingLabelLeft').style.opacity = -direction;
-                  }
+                  }*/
 
                   // Decide if throw was successful
                   const xConfidence = Math.min(Math.abs(xOffset) / element.offsetWidth, 1);
