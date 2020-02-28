@@ -90,7 +90,7 @@ class MoveCard extends Component {
 
             <div className='image-wrapper'>
               
-              {/*<div className="swingLabel swingLabelRight">
+              <div className="swingLabel swingLabelRight">
                 <FontAwesome
                   name='check-circle'
                 />
@@ -99,7 +99,7 @@ class MoveCard extends Component {
                 <FontAwesome
                   name='times-circle'
                 />
-              </div>*/}
+              </div>
               
               <div className='megaformer-image'>
               {/* locations: front, back, carriage, floor */}
@@ -219,18 +219,18 @@ class App extends Component {
               })}
               ref={this.stackEl}
               /*throwout={e => console.log('throwout', e.target.id)}*/
-              throwin={e => e.target.querySelectorAll('.swingLabel').forEach((elem) => { elem.style.opacity = 0 })}
+              dragend={e => e.target.querySelectorAll('.swingLabel').forEach((elem) => { elem.style.opacity = 0 })}
               config={{
                 allowedDirections:[ReactSwing.DIRECTION.LEFT, ReactSwing.DIRECTION.RIGHT],
                 throwOutDistance: () => Math.max(window.innerWidth/4, window.innerHeight),
                 throwOutConfidence: (xOffset, yOffset, element) => {
                   // Yes/No label appearance code
-                  /*let direction = (parseInt(xOffset) / parseInt(element.offsetWidth)) * 1.7;
+                  let direction = (parseInt(xOffset) / parseInt(element.offsetWidth)) * 1.7;
                   if (direction > 0) {
                     element.querySelector('.swingLabelRight').style.opacity = direction;
                   } else if (direction < -0) {
                     element.querySelector('.swingLabelLeft').style.opacity = -direction;
-                  }*/
+                  }
 
                   // Decide if throw was successful
                   const xConfidence = Math.min(Math.abs(xOffset) / element.offsetWidth, 1);
