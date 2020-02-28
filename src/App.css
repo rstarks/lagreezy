@@ -348,3 +348,7 @@ input {
 .swingLabelLeft {
     color: red;
 }
+
+.swingLabelOff {
+    display: hidden;
+}
