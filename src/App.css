@@ -61,6 +61,8 @@ input {
 
     overflow: hidden;
 }
+
+/* Use this query to fix mobile layout issues (browser header/footer get in the way) */
 @media screen and (max-width: 500px) {
     .App {
         height: 90vh;
@@ -286,12 +288,11 @@ input {
     box-shadow: 0px 0px 0px 256px rgba(0,0,0,0.5),
                 4px 4px 4px rgba(0,0,0,0.1);
     border-radius: 10px;
-    /*transition: 0.4s ease-out;*/
+    transition: 0.4s ease-out;
     position: fixed;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    
     z-index: 5;
     text-align: center;
     
@@ -299,7 +300,7 @@ input {
 .off {
     opacity: 0;
     /*transition: 0.4s ease-out;*/
-    
+    pointer-events: none;
 }
 
 .modal .logo {

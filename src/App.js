@@ -13,9 +13,9 @@ import megaformerBack from './img/megaformer-back.svg';
 /* Modal component */
 class Modal extends Component {
   render() {
-    if (!this.props.show) {
+    /*if (!this.props.show) {
       return null;
-    }
+    }*/
     return (
       <div className={this.props.show ? 'modal' : 'modal off'}>
         <div className='logo'>Lagreezy</div>
@@ -296,7 +296,7 @@ class App extends Component {
             <div style={{textAlign:'left'}}>
               <p>This is a prototype of an app designed for Lagree trainers and enthusiasts.</p>
               <p>Currently you can swipe <i>(left or right)</i> through cards with each of the moves featured on the official website. More features and moves will be added soon!</p>
-              <p><b>Today's Updates:</b> Added yes/no selection effect by swiping right and left.</p>
+              <p><b>2/28/2020 Updates:</b> Fixing mobile performance and layout issues.</p>
             </div>
           </Modal>
       </div>
