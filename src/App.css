@@ -332,9 +332,8 @@ input {
     font-weight: bold;
 }
 
-
-
-.swingLabel {
+/* Yes/No hover labels */
+.hover-label {
     pointer-events: none;
     background: white;
     border-radius: 4px;
@@ -352,11 +351,55 @@ input {
     line-height: 40vh;
     visibility: hidden;
 }
-
-.swingLabelRight {
-    color: green;
+.hover-label-right {
+    color: #2ecc71;
+}
+.hover-label-left {
+    color: #e74c3c;
 }
 
-.swingLabelLeft {
-    color: red;
+/* Later refactor into separate panel toggle */
+.list-modal {
+    height: 90vh;
+    max-height: 90vh;
+    width: 56.25vh; /* 1242/2208 * 100 = 56.25 */
+    max-width: 56.25vh; /* 2208/1242 * 100 =  */
+    opacity: 1;
+    background: white;
+    position: fixed;
+    top: 0;
+    left: 50%;
+    z-index: 5;
+    text-align: center;
+    transform: translate(-50%, 0);
+    
+}
+.list-modal-off {
+    opacity: 0;
+    /*transition: 0.4s ease-out;*/
+    pointer-events:none;
+}
+
+/* YES/NO button group styles */
+.yes-no-button-group {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: 1em;
+}
+.yes-no-button-group button {
+    cursor: pointer;
+    background: transparent;
+    border: 0px solid white;
+    font-size: 4em;
+    display: inline-block;
+    width: 50%;
+    pointer-events: all;
+}
+.yes{
+    color: #2ecc71;
+}
+.no {
+    color: #ccc;
 }

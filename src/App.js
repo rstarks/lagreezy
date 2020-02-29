@@ -10,6 +10,27 @@ import megaformerCarriage from './img/megaformer-carriage.svg';
 import megaformerFront from './img/megaformer-front.svg';
 import megaformerBack from './img/megaformer-back.svg';
 
+/* ListModal component */
+class ListModal extends Component {
+  render() {
+    /*if (!this.props.show) {
+      return null;
+    }*/
+    return (
+      <div className={this.props.showList ? 'list-modal' : 'list-modal list-modal-off'}>
+        <div>{this.props.children}</div>
+        <div >
+          <button onClick={this.props.onClose}>Close Panel</button>
+        </div>
+      </div>
+    );
+  }
+}
+ListModal.propTypes = {
+  onClose: PropTypes.func.isRequired,
+  showList: PropTypes.bool.isRequired
+}
+
 /* Modal component */
 class Modal extends Component {
   render() {
@@ -90,12 +111,12 @@ class MoveCard extends Component {
 
             <div className='image-wrapper'>
               
-              <div className="swingLabel swingLabelRight">
+              <div className="hover-label hover-label-right">
                 <FontAwesome
                   name='check-circle'
                 />
               </div>
-              <div className="swingLabel swingLabelLeft">
+              <div className="hover-label hover-label-left">
                 <FontAwesome
                   name='times-circle'
                 />
@@ -128,6 +149,18 @@ class MoveCard extends Component {
 
             <div className='line-break'>Secondary Muscles: {this.listItems(this.props.move.secondary_muscles)}</div>
             
+            <div className='yes-no-button-group'>
+              <button className='no' onClick={this.props.onNoClick}>
+                <FontAwesome
+                  name='times-circle'
+                />
+              </button>
+              <button className='yes' onClick={this.props.onYesClick}>
+                <FontAwesome
+                  name='check-circle'
+                />
+              </button>
+            </div>
             {/*<div className='line-break'>Related Moves: {this.listItems(move.related)}</div>*/}
           
           </div>
@@ -151,6 +184,7 @@ class App extends Component {
     // Update the state with jsonData
     this.state = {
       show: true,
+      showList: false,
       moveData,
       stack: null
     };
@@ -204,6 +238,12 @@ class App extends Component {
     }));
   };
 
+  showListModal = () => {
+    this.setState(prev=>({
+      showList: !prev.showList
+    }));
+  };
+
   render() {
     return (
       <div className="App">
@@ -221,7 +261,7 @@ class App extends Component {
               /*throwout={e => console.log('throwout', e.target.id)}*/
               throwin={e => e.target.classList.remove('drag') }
               dragstart={e => e.target.classList.add('drag') }
-              dragend={e => e.target.querySelectorAll('.swingLabel').forEach((elem) => { 
+              dragend={e => e.target.querySelectorAll('.hover-label').forEach((elem) => { 
                 elem.style.opacity = 0;
                 elem.style.visibility = 'hidden';
                 elem.classList.remove('drag');
@@ -234,14 +274,16 @@ class App extends Component {
                   let direction = (parseInt(xOffset) / parseInt(element.offsetWidth)) * 1.7;
                   if (direction > 0) {
                     // Visibility
-                    element.querySelector('.swingLabelRight').style.visibility = 'visible';
+                    element.querySelector('.hover-label-right').style.visibility = 'visible';
+                    element.querySelector('.hover-label-left').style.visibility = 'hidden';
                     // Opacity
-                    element.querySelector('.swingLabelRight').style.opacity = Math.min(direction.toFixed(2), 1);
+                    element.querySelector('.hover-label-right').style.opacity = Math.min(direction.toFixed(2), 1);
                   } else if (direction < -0) {
                     // Visibility
-                    element.querySelector('.swingLabelLeft').style.visibility = 'visible';
+                    element.querySelector('.hover-label-left').style.visibility = 'visible';
+                    element.querySelector('.hover-label-right').style.visibility = 'hidden';
                     // Opacity
-                    element.querySelector('.swingLabelLeft').style.opacity = Math.min(-direction.toFixed(2), 1);
+                    element.querySelector('.hover-label-left').style.opacity = Math.min(-direction.toFixed(2), 1);
                   }
 
                   // Decide if throw was successful
@@ -260,7 +302,8 @@ class App extends Component {
                   id={move.id}
                   className='card'
                 >
-                    <MoveCard move={move} />
+                    <MoveCard onNoClick={this.throwCard.bind(this, ReactSwing.DIRECTION.LEFT)} 
+                              onYesClick={this.throwCard.bind(this, ReactSwing.DIRECTION.RIGHT)} move={move} />
                 </div>
               ))}
             </ReactSwing>
@@ -287,7 +330,7 @@ class App extends Component {
 
             {/* Graph panel button onClick={this.throwCard.bind(this, ReactSwing.DIRECTION.RIGHT)} */}
             <div className="control">
-              <button type="button" >
+              <button type="button" onClick={e => { this.showListModal(); }}>
                 <FontAwesome
                   name='bar-chart'
                 />
@@ -299,9 +342,16 @@ class App extends Component {
             <div style={{textAlign:'left'}}>
               <p>This is a prototype of an app designed for Lagree trainers and enthusiasts.</p>
               <p>Currently you can swipe <i>(left or right)</i> through cards with each of the moves featured on the official website. More features and moves will be added soon!</p>
-              <p><b>2/28/2020 Updates:</b> Fixing mobile performance and layout issues.</p>
+              <p><b>2/29/2020 Updates:</b> Updated styling and added rough list panel and added explicit no/yes buttons to each card.</p>
             </div>
           </Modal>
+
+          <ListModal onClose={this.showListModal} showList={this.state.showList}>
+            Move list view panel (selected moves will go here)<br />
+            <div style={{textAlign:'left'}}>
+              <p>LIST</p>
+            </div>
+          </ListModal>
       </div>
     );
   }
