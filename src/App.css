@@ -84,6 +84,7 @@ input {
     color: inherit;
     border: 0px solid white;
     font-size: inherit;
+    background: transparent;
 }
 .logo {
     font-family: 'Pacifico', cursive;
@@ -191,16 +192,17 @@ input {
     width: 26%;
     display: inline-block;
     text-align: right;
-    height: 14px;
+    height: 1.6em;
 }
 
 #viewport .springs {
-    width: 14px;
-    height: 14px;
-    margin: 1px;
-    border-radius: 7px;
+    width: 1.6em;
+    height: 1.6em;
+    margin: 0.1em 0.2em 0 0.2em;
+    border-radius: 0.9em;
     background: yellow;
     display: inline-block;
+
     text-align: center;
 }
 
