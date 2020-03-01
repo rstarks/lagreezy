@@ -9,6 +9,12 @@ import megaformerVector from './img/megaformer-isometric.svg';
 import megaformerCarriage from './img/megaformer-carriage.svg';
 import megaformerFront from './img/megaformer-front.svg';
 import megaformerBack from './img/megaformer-back.svg';
+import megaformerFloor from './img/megaformer-floor.svg';
+
+import megaformerFacingForward from './img/megaformer-facing-forward.svg';
+import megaformerFacingReverse from './img/megaformer-facing-reverse.svg';
+import megaformerFacingSide from './img/megaformer-facing-side.svg';
+
 
 /* ListModal component */
 class ListModal extends Component {
@@ -93,11 +99,24 @@ class MoveCard extends Component {
     } else if (location === 'back') {
       locationImage = megaformerBack;
     } else if (location === 'floor') {
-      /*fix this later */
-      locationImage = megaformerBack;
+      locationImage = megaformerFloor;
     }
     return(
       <img src={locationImage} alt="Megaformer" />
+    )
+  }
+
+  getDirection(direction) {
+    let directionImage;
+    if (direction === "forward") {
+      directionImage = megaformerFacingForward;
+    } else if (direction === "reverse") {
+      directionImage = megaformerFacingReverse;
+    } else if (direction === "side") {
+      directionImage = megaformerFacingSide;
+    }
+    return(
+      <img src={directionImage} alt="Direction Facing" />
     )
   }
 
@@ -128,6 +147,9 @@ class MoveCard extends Component {
               {this.props.move.location.map(location =>
                 this.getLocation(location)
               )}
+
+              {this.getDirection(this.props.move.direction)}
+
               <img src={megaformerVector} alt="Megaformer Vector" />
               
               
@@ -141,7 +163,7 @@ class MoveCard extends Component {
             <div className='line-break'>{this.props.move.black_cables ? 'Black Cables' : '' }</div>
             <div className='line-break'>{this.props.move.red_cables ? 'Red Cables' : '' }</div>
 
-            <div className='line-break'>Direction Facing: {this.props.move.direction}</div>
+            {/*<div className='line-break'>Direction Facing: {this.props.move.direction}</div>*/}
             
             <div className='line-break'>Duration: {this.props.move.duration}:00</div>
 
