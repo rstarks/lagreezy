@@ -252,6 +252,7 @@ input {
     left: 0;
     margin: 0.8em;
     border: 0px solid black;
+    pointer-events: none;
 }
 #viewport .move-block-level-action .level { color: #ccc; }
 #viewport .move-block-level-action .action { color: #aaa; }
