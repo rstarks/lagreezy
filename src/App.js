@@ -212,7 +212,7 @@ class MoveCard extends Component {
               </div> : ''
             }
 
-            {/*this.props.move.related.length > 0 ? 
+            {this.props.move.related.length > 0 ? 
               <div className='related'>Related Moves: {
                 this.props.move.related.map((move, id) => {
                   return id !== this.props.move.related.length - 1 ?
@@ -220,7 +220,7 @@ class MoveCard extends Component {
                 }) 
               }
               </div> : ''
-            /*}
+            }
             
             <div className='yes-no-button-group'>
               <button className='no' onClick={this.props.onNoClick}>
