@@ -182,11 +182,11 @@ class MoveCard extends Component {
                 <img src={megaformerVector} alt="Megaformer Vector" />
               </div>
 
-              {/*<div className='move-time'>
+              <div className='move-time'>
                 <FontAwesome name='clock' />&nbsp;{this.props.move.duration}:00
               </div>
 
-              <div className='move-block-level-action'>
+              {/*<div className='move-block-level-action'>
                 <span className='level'>{this.props.move.level}</span>
                 <br />
                 <span className='action'>{this.listItems(this.props.move.action)}</span>
