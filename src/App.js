@@ -415,7 +415,7 @@ class App extends Component {
             <div style={{textAlign:'left'}}>
               <p>This is a prototype of an app designed for Lagree trainers and enthusiasts.</p>
               <p>Currently you can swipe <i>(left or right)</i> through cards with each of the moves featured on the official website. More features and moves will be added soon!</p>
-              <p><b>2/29/2020 Updates:</b> Updated styling and added rough list panel and added explicit no/yes buttons to each card.</p>
+              <p><b>3/2/2020 Updates:</b> Added cable images, move duration, and related moves to each card.</p>
             </div>
           </Modal>
 
