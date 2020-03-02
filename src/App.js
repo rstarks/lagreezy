@@ -15,6 +15,9 @@ import megaformerFacingForward from './img/megaformer-facing-forward.svg';
 import megaformerFacingReverse from './img/megaformer-facing-reverse.svg';
 import megaformerFacingSide from './img/megaformer-facing-side.svg';
 
+import megaformerCablesBlack from './img/megaformer-cables-black.svg';
+import megaformerCablesRed from './img/megaformer-cables-red.svg';
+
 
 /* ListModal component */
 class ListModal extends Component {
@@ -120,6 +123,23 @@ class MoveCard extends Component {
     )
   }
 
+  formatMuscleGroupName(muscle) {
+    muscle = muscle.split('_').join(' ');
+
+    muscle = muscle
+    .toLowerCase()
+    .split(' ')
+    .map((s) => s.charAt(0).toUpperCase() + s.substring(1))
+    .join(' ');
+
+    return muscle;
+  }
+
+  getMoveName(move_id) {
+    return this.props.moves.filter(move => move.id === move_id).length > 0 ? 
+      this.props.moves.filter(move => move.id === move_id)[0].name.toString() : '';
+  }
+
   render() {
     return (
         <div ref={this.props.move.id} key={this.props.move.id}>
@@ -140,36 +160,67 @@ class MoveCard extends Component {
                   name='times-circle'
                 />
               </div>
-              
+
               <div className='megaformer-image'>
-              {/* locations: front, back, carriage, floor */}
-              
-              {this.props.move.location.map(location =>
-                this.getLocation(location)
-              )}
 
-              {this.getDirection(this.props.move.direction)}
+                {/* locations: front, back, carriage, floor */}              
+                {this.props.move.location.map(location =>
+                  this.getLocation(location)
+                )}
 
-              <img src={megaformerVector} alt="Megaformer Vector" />
-              
-              
+                {/* Get the direction arrows (forward, reverse, side) */}
+                {this.getDirection(this.props.move.direction)}
+                
+                {/* Devon, get the cables */}
+                {this.props.move.black_cables ? 
+                  <img src={megaformerCablesBlack} alt="Black Cables" /> : ''
+                }
+                {this.props.move.red_cables ? 
+                  <img src={megaformerCablesRed} alt="Red Cables" /> : '' 
+                }
+
+                <img src={megaformerVector} alt="Megaformer Vector" />
               </div>
+
+              <div className='move-time'>
+                <FontAwesome name='clock' />&nbsp;{this.props.move.duration}:00
+              </div>
+
+              <div className='move-block-level-action'>
+                <span className='level'>{this.props.move.level}</span>
+                <br />
+                <span className='action'>{this.listItems(this.props.move.action)}</span>
+                <br />
+                <span className='block'>{this.props.move.block}</span>
+              </div>
+
             </div>
 
-            <div className='move-block'><b>Block: </b>{this.props.move.block} - {this.props.move.level}</div>
-            <div className='move-action'><b>Action: </b> {this.listItems(this.props.move.action)}</div>
-
             {/* Used for extra info not yet surfaced on the cards 0.654485 */}
-            <div className='line-break'>{this.props.move.black_cables ? 'Black Cables' : '' }</div>
-            <div className='line-break'>{this.props.move.red_cables ? 'Red Cables' : '' }</div>
 
             {/*<div className='line-break'>Direction Facing: {this.props.move.direction}</div>*/}
             
-            <div className='line-break'>Duration: {this.props.move.duration}:00</div>
+            {this.props.move.primary_muscles.length > 0 ?
+              <div className='line-break'>Primary Muscles:  {
+                this.formatMuscleGroupName(this.listItems(this.props.move.primary_muscles))}
+              </div> : ''
+            }
+            
+            {this.props.move.secondary_muscles.length > 0 ?
+              <div className='line-break'>Secondary Muscles: { 
+                this.formatMuscleGroupName(this.listItems(this.props.move.secondary_muscles)) }
+              </div> : ''
+            }
 
-            <div className='line-break'>Primary Muscles: {this.listItems(this.props.move.primary_muscles)}</div>
-
-            <div className='line-break'>Secondary Muscles: {this.listItems(this.props.move.secondary_muscles)}</div>
+            {this.props.move.related.length > 0 ? 
+              <div className='related'>Related Moves: {
+                this.props.move.related.map((move, id) => {
+                  return id !== this.props.move.related.length - 1 ?
+                    this.getMoveName(move) + ', ' : this.getMoveName(move);
+                }) 
+              }
+              </div> : ''
+            }
             
             <div className='yes-no-button-group'>
               <button className='no' onClick={this.props.onNoClick}>
@@ -325,7 +376,7 @@ class App extends Component {
                   className='card'
                 >
                     <MoveCard onNoClick={this.throwCard.bind(this, ReactSwing.DIRECTION.LEFT)} 
-                              onYesClick={this.throwCard.bind(this, ReactSwing.DIRECTION.RIGHT)} move={move} />
+                              onYesClick={this.throwCard.bind(this, ReactSwing.DIRECTION.RIGHT)} move={move} moves={this.state.moveData.moves} />
                 </div>
               ))}
             </ReactSwing>

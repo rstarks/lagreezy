@@ -232,6 +232,32 @@ input {
     position: absolute;
 }
 
+#viewport .move-time {
+    color: #aaa;
+    font-size: 1.6em;
+    position: absolute;
+    text-align: right;
+    top: 0;
+    right: 0;
+    margin: 0.8em;
+    border: 0px solid black;
+}
+
+#viewport .move-block-level-action {
+    text-transform: uppercase;
+    font-size: 1.6em;
+    position: absolute;
+    text-align: left;
+    bottom: 0;
+    left: 0;
+    margin: 0.8em;
+    border: 0px solid black;
+}
+#viewport .move-block-level-action .level { color: #ccc; }
+#viewport .move-block-level-action .action { color: #aaa; }
+#viewport .move-block-level-action .block { color: #666; }
+
+
 #viewport .megaformer-image img {
   pointer-events: none;
   position: absolute;
@@ -239,12 +265,6 @@ input {
   left: 5%;
   width: 90%;
   height: 90%;
-}
-
-#viewport .move-block {
-    width: 60%;
-    display: inline-block;
-    font-size: 1.2em;
 }
 
 #viewport .move-action {
@@ -261,8 +281,19 @@ input {
     padding: 0 1em;
     background: #ddd;
     line-height: 2em;
-    font-size: 1.2em;
+    font-size: 1.4em;
     border-radius: 4px;
+}
+#viewport .related {
+    text-align: center;
+    color: #aaa;
+    white-space: pre-line;
+    margin: 0.25em 0px;
+    padding: 0 1em;
+    line-height: 2em;
+    font-size: 1.4em;
+    font-style: italic;
+    font-weight: bold;
 }
 
 #viewport .in-deck:nth-child(3) {

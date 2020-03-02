@@ -16,7 +16,25 @@
             "secondary_muscles" : ["abdominals"],
             "level" : "basic",
             "action" : ["pulling"],
-            "related" : ["catfish", "plank", "chest_opener", "kneeling_lat_pull"]
+            "related" : ["catfish", "plank", "kneeling_chest_opener", "kneeling_lat_pull"]
+        },
+        {
+            "id" : "plank",
+            "name" : "Plank",
+            "block" : "core", 
+            "two_sided" : false,
+            "yellow_springs" : 1,
+            "red_springs" : 0,
+            "black_cables" : false,
+            "red_cables" : false,
+            "location" : ["front", "carriage"],
+            "direction" : "forward",
+            "duration" : 1,
+            "primary_muscles" : ["triceps", "shoulders", "lats"],
+            "secondary_muscles" : ["abdominals"],
+            "level" : "basic",
+            "action" : ["pulling"],
+            "related" : ["catfish", "wheelbarrow", "kneeling_chest_opener", "kneeling_lat_pull"]
         },
         {
             "id" : "reverse_wheelbarrow",
@@ -34,7 +52,7 @@
             "secondary_muscles" : ["abdominals"],
             "level" : "basic",
             "action" : ["pulling"],
-            "related" : ["wheelbarrow", "catfish", "chest_opener", "kneeling_lat_pull"]
+            "related" : ["wheelbarrow", "catfish", "kneeling_chest_opener", "kneeling_lat_pull"]
         },
         {
             "id" : "bear",
@@ -124,7 +142,7 @@
             "secondary_muscles" : ["abdominals"],
             "level" : "advanced",
             "action" : ["pulling","pushing"],
-            "related" : ["wheelbarrow", "catfish", "bear", "spoon", "triceps_dips", "sexy_back"]
+            "related" : ["wheelbarrow", "catfish", "bear", "spoon", "triceps_dips", "kneeling_sexy_back"]
         },
         {
             "id" : "bear_cobra_combination",
@@ -213,7 +231,7 @@
             "secondary_muscles" : ["abdominals"],
             "level" : "intermediate",
             "action" : ["pulling"],
-            "related" : ["catfish", "plank_to_pike", "cobra", "triceps_dips", "chest_opener"]
+            "related" : ["catfish", "plank_to_pike", "cobra", "triceps_dips", "kneeling_chest_opener"]
         },
         {
             "id" : "spoon_triceps_dips_combination",
@@ -231,7 +249,7 @@
             "secondary_muscles" : ["abdominals"],
             "level" : "intermediate",
             "action" : ["pulling"],
-            "related" : ["catfish", "plank_to_pike", "cobra", "triceps_dips", "chest_opener"]
+            "related" : ["catfish", "plank_to_pike", "cobra", "triceps_dips", "kneeling_chest_opener"]
         },
         {
             "id" : "giant_wheelbarrow",
@@ -513,6 +531,42 @@
             "black_cables" : true,
             "red_cables" : false,
             "location" : ["carriage"],
+            "direction" : "side",
+            "duration" : 1,
+            "primary_muscles" : ["obliques"],
+            "secondary_muscles" : ["shoulders"],
+            "level" : "basic",
+            "action" : ["pulling"],
+            "related" : ["tailbone_torso_twist", "teaser", "mermaid_twist"]
+        },
+        {
+            "id" : "tailbone_torso_twist",
+            "name" : "Tailbone Torso Twist",
+            "block" : "obliques", 
+            "two_sided" : true,
+            "yellow_springs" : 2,
+            "red_springs" : 0,
+            "black_cables" : true,
+            "red_cables" : false,
+            "location" : ["carriage"],
+            "direction" : "side",
+            "duration" : 1,
+            "primary_muscles" : ["obliques"],
+            "secondary_muscles" : ["shoulders"],
+            "level" : "basic",
+            "action" : ["pulling"],
+            "related" : ["kneeling_torso_twist", "teaser", "mermaid_twist"]
+        },
+        {
+            "id" : "side_plank",
+            "name" : "Side Plank",
+            "block" : "obliques", 
+            "two_sided" : true,
+            "yellow_springs" : 0,
+            "red_springs" : 0,
+            "black_cables" : false,
+            "red_cables" : false,
+            "location" : ["carriage", "front"],
             "direction" : "side",
             "duration" : 1,
             "primary_muscles" : ["obliques"],
@@ -809,7 +863,7 @@
             "secondary_muscles" : ["quads", "abdominals"],
             "level" : "advanced",
             "action" : ["pulling"],
-            "related" : ["bungee_kicks", "express_lunge", "mega_hamstring_curls", "reverse_standing_inner_thighs"]
+            "related" : ["bungee_kicks", "express_lunge", "mega_hamstring_leg_curls", "reverse_standing_inner_thighs"]
         },
         {
             "id" : "fifth_lunge_carriage_kicks",
@@ -827,7 +881,7 @@
             "secondary_muscles" : ["quads", "abdominals"],
             "level" : "advanced",
             "action" : ["pulling"],
-            "related" : ["bungee_kicks", "express_lunge", "mega_hamstring_curls", "reverse_standing_inner_thighs"]
+            "related" : ["bungee_kicks", "express_lunge", "mega_hamstring_leg_curls", "reverse_standing_inner_thighs"]
         },
         {
             "id" : "fifth_lunge_moonwalker",
@@ -845,7 +899,7 @@
             "secondary_muscles" : ["quads", "abdominals"],
             "level" : "advanced",
             "action" : ["pulling"],
-            "related" : ["bungee_kicks", "express_lunge", "mega_hamstring_curls", "squats"]
+            "related" : ["bungee_kicks", "express_lunge", "mega_hamstring_leg_curls", "squats"]
         },
         {
             "id" : "back_lunge",
@@ -863,7 +917,7 @@
             "secondary_muscles" : ["quads", "abdominals"],
             "level" : "intermediate",
             "action" : ["pulling"],
-            "related" : ["express_lunge", "reverse_catfish", "mega_leg_curls", "reverse_standing_inner_thighs"]
+            "related" : ["express_lunge", "reverse_catfish", "mega_hamstring_leg_curls", "reverse_standing_inner_thighs"]
         },
         {
             "id" : "reverse_floor_lunge",
@@ -900,6 +954,24 @@
             "level" : "intermediate",
             "action" : ["pulling"],
             "related" : ["bungee_kicks", "express_lunge", "fifth_lunge", "giant_squats", "giant_sexy_back"]
+        },
+        {
+            "id" : "giant_squats",
+            "name" : "Giant Squats",
+            "block" : "legs", 
+            "two_sided" : false,
+            "yellow_springs" : 2,
+            "red_springs" : 0,
+            "black_cables" : false,
+            "red_cables" : true,
+            "location" : ["floor"],
+            "direction" : "forward",
+            "duration" : 2,
+            "primary_muscles" : ["hamstrings", "glutes"],
+            "secondary_muscles" : ["quads", "abdominals"],
+            "level" : "intermediate",
+            "action" : ["pulling"],
+            "related" : ["bungee_kicks", "express_lunge", "fifth_lunge", "stationary_lunge", "giant_sexy_back"]
         },
         {
             "id" : "super_lunge",
@@ -1043,7 +1115,7 @@
             "secondary_muscles" : ["abdominals", "chest", "shoulders"],
             "level" : "advanced",
             "action" : ["pushing"],
-            "related" : ["triceps_dips", "sexy_back", "triceps_extension", "chest_press", "spoon"]
+            "related" : ["triceps_dips", "kneeling_sexy_back", "triceps_extension", "chest_press", "spoon"]
         },
         {
             "id" : "flying_mega_donkey_kicks",
@@ -1295,7 +1367,7 @@
             "secondary_muscles" : [],
             "level" : "intermediate",
             "action" : ["pulling"],
-            "related" : ["mega_hamstring_curls", "bungee_kicks", "bungee_hamstring_curls", "fifth_lunge"]
+            "related" : ["mega_hamstring_leg_curls", "bungee_kicks", "bungee_hamstring_curls", "fifth_lunge"]
         },
         {
             "id" : "mega_hamstring_leg_curls",
@@ -1332,6 +1404,42 @@
             "level" : "intermediate",
             "action" : ["pulling"],
             "related" : ["leaning_tower", "smooth_criminal", "bungee_hamstring_curls", "fifth_lunge"]
+        },
+        {
+            "id" : "leaning_tower",
+            "name" : "Leaning Tower",
+            "block" : "legs", 
+            "two_sided" : false,
+            "yellow_springs" : 2,
+            "red_springs" : 0,
+            "black_cables" : true,
+            "red_cables" : false,
+            "location" : ["carriage", "back"],
+            "direction" : "reverse",
+            "duration" : 1,
+            "primary_muscles" : ["hamstrings", "glutes"],
+            "secondary_muscles" : ["abdominals", "gastrocnemius"],
+            "level" : "intermediate",
+            "action" : ["pulling"],
+            "related" : ["smooth_criminal", "bungee_hamstring_curls", "fifth_lunge"]
+        },
+        {
+            "id" : "smooth_criminal",
+            "name" : "Smooth Criminal",
+            "block" : "legs", 
+            "two_sided" : false,
+            "yellow_springs" : 2,
+            "red_springs" : 0,
+            "black_cables" : true,
+            "red_cables" : false,
+            "location" : ["carriage", "back"],
+            "direction" : "reverse",
+            "duration" : 1,
+            "primary_muscles" : ["hamstrings", "glutes"],
+            "secondary_muscles" : ["abdominals", "gastrocnemius"],
+            "level" : "intermediate",
+            "action" : ["pulling"],
+            "related" : ["leaning_tower", "bungee_hamstring_curls", "fifth_lunge"]
         },
         {
             "id" : "bungee_hamstring_curls",
@@ -1640,6 +1748,42 @@
             "related" : ["giant_crunch", "reverse_super_crunch_with_twist", "scrambled_eggs", "french_twist"]
         },
         {
+            "id" : "reverse_super_crunch_with_twist",
+            "name" : "Reverse Super Crunch with Twist",
+            "block" : "obliques", 
+            "two_sided" : true,
+            "yellow_springs" : 1,
+            "red_springs" : 0,
+            "black_cables" : false,
+            "red_cables" : false,
+            "location" : ["carriage", "back"],
+            "direction" : "reverse",
+            "duration" : 1,
+            "primary_muscles" : ["obliques", "abdominals"],
+            "secondary_muscles" : [],
+            "level" : "intermediate",
+            "action" : ["pulling"],
+            "related" : ["giant_crunch", "reverse_soul_train", "scrambled_eggs", "french_twist"]
+        },
+        {
+            "id" : "super_crunch_with_twist",
+            "name" : "Super Crunch with Twist",
+            "block" : "obliques", 
+            "two_sided" : true,
+            "yellow_springs" : 1,
+            "red_springs" : 0,
+            "black_cables" : false,
+            "red_cables" : false,
+            "location" : ["carriage", "back"],
+            "direction" : "forward",
+            "duration" : 1,
+            "primary_muscles" : ["obliques", "abdominals"],
+            "secondary_muscles" : [],
+            "level" : "intermediate",
+            "action" : ["pulling"],
+            "related" : ["giant_crunch", "reverse_soul_train", "scrambled_eggs", "french_twist"]
+        },
+        {
             "id" : "soul_train",
             "name" : "Soul Train",
             "block" : "obliques", 
@@ -1729,6 +1873,24 @@
             "action" : ["pushing"],
             "related" : ["triceps_dips", "giant_sexy_back", "1-arm_triceps_kickback"]
         },
+                {
+            "id" : "arm_triceps_kickback",
+            "name" : "Single Arm Triceps Kickback",
+            "block" : "arms", 
+            "two_sided" : true,
+            "yellow_springs" : 3,
+            "red_springs" : 0,
+            "black_cables" : true,
+            "red_cables" : false,
+            "location" : ["carriage"],
+            "direction" : "reverse",
+            "duration" : 1,
+            "primary_muscles" : ["triceps"],
+            "secondary_muscles" : [],
+            "level" : "intermediate",
+            "action" : ["pulling"],
+            "related" : ["triceps_dips", "giant_sexy_back", "triceps_press"]
+        },
         {
             "id" : "giant_sexy_back",
             "name" : "Giant Sexy Back",
@@ -1745,7 +1907,7 @@
             "secondary_muscles" : ["glutes", "abdominals"],
             "level" : "basic",
             "action" : ["pushing"],
-            "related" : ["triceps_dips", "triceps_press", "chest_opener", "giant_triceps_extension"]
+            "related" : ["triceps_dips", "triceps_press", "kneeling_chest_opener", "giant_triceps_extension"]
         },
         {
             "id" : "kneeling_sexy_back",
@@ -1763,7 +1925,7 @@
             "secondary_muscles" : ["rear deltoids"],
             "level" : "intermediate",
             "action" : ["pushing"],
-            "related" : ["triceps_dips", "triceps_press", "kneeling_triceps_extension", "chest_opener"]
+            "related" : ["triceps_dips", "triceps_press", "kneeling_triceps_extension", "kneeling_chest_opener"]
         },
         {
             "id" : "kneeling_triceps_extension",
@@ -1781,7 +1943,7 @@
             "secondary_muscles" : [],
             "level" : "intermediate",
             "action" : ["pushing"],
-            "related" : ["triceps_dips", "triceps_press", "kneeling_sexy_back", "chest_opener"]
+            "related" : ["triceps_dips", "triceps_press", "kneeling_sexy_back", "kneeling_chest_opener"]
         },
         {
             "id" : "giant_triceps_extension",
@@ -1871,7 +2033,7 @@
             "secondary_muscles" : [],
             "level" : "intermediate",
             "action" : ["pulling"],
-            "related" : ["kneeling_bicep_pull", "kneeling_bicep_pulldown", "giant_bicep_curl"]
+            "related" : ["kneeling_bicep_pulldown", "giant_bicep_curl"]
         },
         {
             "id" : "kneeling_bicep_pulldown",
@@ -2051,7 +2213,7 @@
             "secondary_muscles" : ["abdominals", "shoulders"],
             "level" : "advanced",
             "action" : ["pulling", "pushing"],
-            "related" : ["leaning_tower", "mega_hamstring_curls", "mega_leg_curls", "kneeling_shoulder_press", "kneeling_chest_opener"]
+            "related" : ["leaning_tower", "mega_hamstring_leg_curls", "kneeling_shoulder_press", "kneeling_chest_opener"]
         },
         {
             "id" : "kneeling_serve_the_platter",
@@ -2142,6 +2304,24 @@
             "level" : "intermediate",
             "action" : ["pulling"],
             "related" : ["kneeling_bicep_pulldown", "1-arm_row", "kneeling_row_pulldown", "giant_reverse_wheelbarrow"]
+        },
+        {
+            "id" : "kneeling_row_pulldown",
+            "name" : "Kneeling Row Pulldown",
+            "block" : "arms", 
+            "two_sided" : false,
+            "yellow_springs" : 2,
+            "red_springs" : 0,
+            "black_cables" : false,
+            "red_cables" : false,
+            "location" : ["carriage", "back"],
+            "direction" : "reverse",
+            "duration" : 1,
+            "primary_muscles" : ["back", "lats"],
+            "secondary_muscles" : [],
+            "level" : "intermediate",
+            "action" : ["pulling"],
+            "related" : ["kneeling_bicep_pulldown", "1-arm_row", "kneeling_lat_pulldown", "giant_reverse_wheelbarrow"]
         },
         {
             "id" : "mega_lat_pulldown",
