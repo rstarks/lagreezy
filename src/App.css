@@ -241,6 +241,7 @@ input {
     right: 0;
     margin: 0.8em;
     border: 0px solid black;
+    pointer-events: none;
 }
 
 #viewport .move-block-level-action {
