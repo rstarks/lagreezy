@@ -182,7 +182,7 @@ class MoveCard extends Component {
                 <img src={megaformerVector} alt="Megaformer Vector" />
               </div>
 
-              <div className='move-time'>
+              {/*<div className='move-time'>
                 <FontAwesome name='clock' />&nbsp;{this.props.move.duration}:00
               </div>
 
@@ -192,7 +192,7 @@ class MoveCard extends Component {
                 <span className='action'>{this.listItems(this.props.move.action)}</span>
                 <br />
                 <span className='block'>{this.props.move.block}</span>
-              </div>
+              </div>*/}
 
             </div>
 
@@ -212,7 +212,7 @@ class MoveCard extends Component {
               </div> : ''
             }
 
-            {this.props.move.related.length > 0 ? 
+            {/*this.props.move.related.length > 0 ? 
               <div className='related'>Related Moves: {
                 this.props.move.related.map((move, id) => {
                   return id !== this.props.move.related.length - 1 ?
@@ -220,7 +220,7 @@ class MoveCard extends Component {
                 }) 
               }
               </div> : ''
-            }
+            /*}
             
             <div className='yes-no-button-group'>
               <button className='no' onClick={this.props.onNoClick}>
