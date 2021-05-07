@@ -81,10 +81,10 @@ class MoveCard extends Component {
   getSpringCount(red, yellow) {
     let springCost = [];
     for (let i = 0; i < red; i++) {
-      springCost.push(<div className='red springs'> </div>)
+      springCost.push(<div key={i} className='red springs'> </div>)
     }
     for (let j = 0; j < yellow; j++) {
-      springCost.push(<div className='yellow springs'> </div>)
+      springCost.push(<div key={j} className='yellow springs'> </div>)
     }
     return (
       <div className='spring-box'>
